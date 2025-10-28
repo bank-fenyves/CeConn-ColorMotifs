@@ -28,3 +28,30 @@ The aim of this tool is to evaluate directed and signed 3-node subgraphs of the 
 - partialtranslator.py: this algorithm translates the induced results to partial motif counts (using translator.csv)
 - partialresults.csv: Partial motifs in the connectome and 1 000 random networks
   - Data from partialtranslator.py
+
+"2nodefinder" is a seperate tool, used for directed and signed 3-node subgraph enumeration of the Caenorhabditis elegans connectome that also considers neuron modalities
+- modef2.csv : definition of motifs
+  - The two letters correspond to the modality of the two neurons
+    - 'S' for sensory neurons
+    - 'I' for interneurons
+    - 'M' for motor neurons
+    - 'P' for polymodal neurons
+  - If we name the nodes ‘A’, ‘B’ the 2-digit numerical code representes edges in the following order: A->B, B->A
+    - ‘1’ is a virtual colour, it means that there is no connection in that direction
+    - ‘2’ means that the synapse is excitatory
+    - ‘3’ means that the synapse is inhibitory
+    - ‘4’ means that the polarity of the synapse is unknown
+  - The name of the motifs consists a letter and a number. The letter shows the modality-combination of the two neurons, while the number show the edge-polarity coloring of the motif
+- motifnames.csv : names of motifs defined in motifdef.csv
+- neurons.csv : list of neurons by neuron modality
+- edges.csv : list of signed edges in the connectome and 1 000 random networks
+  - Neurons are represented as 3-digit numbers (see above), therefore edges are coded as 6-digit numbers (the combination of the pre- and postsynaptic neuron code)
+  - Edge-colours are coded from 2 to 4 (see above)
+  - Connectome polarity data from Fenyves et al. 2020
+- 2nodeinducedfinder.py: this algorithm enumerates induced subgraphs in the connectome and random networks using the data described above
+- inducedresults.csv: Induced motifs in the connectome and 1 000 random networks
+  - Data from inducedfinder.
+- translator2.csv: list of partial subgraphs in each induced motif
+- partialtranslator.py: this algorithm translates the induced results to partial motif counts (using translator2.csv)
+- partialresults.csv: Partial motifs in the connectome and 1 000 random networks
+  - Data from partialtranslator.py
